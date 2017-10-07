@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+# Defaults for repos
+
+repos:
+  https: True
+  debian_backports:
+    enabled: True
+    url: http://ftp.debian.org/debian
+    dist: jessie-backports
+  debian:
+    enabled: False
+    url: http://mirrors.linode.com/debian
+    dist: stable
+  mysql:
+    enabled: False
+    url: http://repo.mysql.com/apt/debian/
+    keyid: 5072E1F5
+    keyserver: pgp.mit.edu
+  docker:
+    enabled: False
+    url: https://apt.dockerproject.org/repo
+    dist: debian-jessie
+    keyserver: pgp.mit.edu
+    keyid: 2C52609D
+  elastic:
+    enabled: False
+    url: https://artifacts.elastic.co/packages/5.x/apt
+    version: 5.x
+    key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  nginx:
+    enabled: False
+    url: http://nginx.org/packages/
+  jenkins:
+    enabled: False
+    url: http://pkg.jenkins-ci.org/debian
+  saltstack:
+    enabled: False
+    url: https://repo.saltstack.com
+  non_free:
+    jessie:
+      enabled: False
+  ceph:
+    enabled: False
+    url: https://download.ceph.com/debian-kraken/
+    release: {{ grains.oscodename | lower }}
+    comp: main
+    key_url: https://download.ceph.com/keys/release.asc
+  nodejs:
+    enabled: False
+    url: https://deb.nodesource.com/node_8.x
+    release: {{ grains.oscodename }}
+    comp: main
+    key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key

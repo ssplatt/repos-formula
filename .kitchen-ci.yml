@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+driver:
+  name: linode
+
+provisioner:
+  name: salt_solo
+  is_file_root: true
+  salt_copy_filter:
+    - .kitchen
+    - .git
+  state_top:
+    base:
+      "*":
+        - test.mockup
+        - repos
+
+platforms:
+  - name: debian_jessie
+
+suites:
+  - name: default
+
+  - name: custom
+    provisioner:
+      pillars-from-files:
+        repos.sls: pillar-custom.sls
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - repos
